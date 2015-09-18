@@ -43,3 +43,7 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'react-rails', '~> 1.0'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+gem 'font-awesome-sass'
