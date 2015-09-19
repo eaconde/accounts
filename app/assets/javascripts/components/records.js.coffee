@@ -11,6 +11,8 @@
       React.DOM.h2
         className: 'title'
         'Records'
+      React.createElement RecordForm
+      React.DOM.hr null
       React.DOM.table
         className: 'table table-bordered'
         React.DOM.thead null,
