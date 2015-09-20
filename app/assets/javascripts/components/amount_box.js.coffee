@@ -1,4 +1,4 @@
-@Amount = React.createClass
+@AmountBox = React.createClass
   render: ->
     R = React.DOM
     R.div
