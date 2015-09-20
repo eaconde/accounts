@@ -48,6 +48,7 @@
             R.th null, 'Date'
             R.th null, 'Title'
             R.th null, 'Amount'
+            R.th null, 'Actions'
         R.tbody null
           for record in @state.records
             # TODO: Bug here, newly added record gets inserted outside of the tbody tag
