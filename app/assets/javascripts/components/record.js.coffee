@@ -36,14 +36,17 @@
     R.tr null,
       R.td null, @props.record.date
       R.td null, @props.record.title
-      R.td null, amountFormat(@props.record.amount)
-      R.td null,
+      R.td
+        className: 'text-right'
+        amountFormat(@props.record.amount)
+      R.td
+        className: 'row'
         R.a
-          className: 'btn btn-default'
+          className: 'btn btn-default col-xs-6'
           onClick: @handleToggle
           'Edit'
         R.a
-          className: 'btn btn-danger'
+          className: 'btn btn-danger col-xs-6'
           onClick: @handleDelete
           'Delete'
 
@@ -70,11 +73,11 @@
           ref: 'amount'
       R.td null,
         R.a
-          className: 'btn btn-default'
+          className: 'btn btn-default col-xs-6'
           onClick: @handleEdit
           'Update'
         R.a
-          className: 'btn btn-danger'
+          className: 'btn btn-danger col-xs-6'
           onClick: @handleDelete
           'Delete'
 

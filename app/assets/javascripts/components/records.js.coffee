@@ -47,13 +47,16 @@
       className: 'records'
       R.h2
         className: 'title'
-        'Records'
+        'Accounts Tracker'
       R.div
-        React.createElement AmountBox, type: 'success', amount: @credits(), text: 'Credit'
-        React.createElement AmountBox, type: 'danger', amount: @debits(), text: 'Debit'
-        React.createElement AmountBox, type: 'info', amount: @balance(), text: 'Balance'
-      React.createElement RecordForm,
-        handleNewRecord: @addRecord
+        className: 'row'
+        React.createElement AmountBox, type: 'success', amount: @credits(), text: 'CREDIT'
+        React.createElement AmountBox, type: 'danger', amount: @debits(), text: 'DEBIT'
+        React.createElement AmountBox, type: 'info', amount: @balance(), text: 'BALANCE'
+      R.div
+        className: 'account-form'
+        React.createElement RecordForm,
+          handleNewRecord: @addRecord
       R.hr null
       R.table
         className: 'table table-bordered'
