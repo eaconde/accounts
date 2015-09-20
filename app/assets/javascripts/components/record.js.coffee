@@ -1,6 +1,7 @@
 @Record = React.createClass
   render: ->
-    React.DOM.tr null,
-      React.DOM.td null, @props.record.date
-      React.DOM.td null, @props.record.title
-      React.DOM.td null, amountFormat(@props.record.amount)
+    R = React.DOM
+    R.tr null,
+      R.td null, @props.record.date
+      R.td null, @props.record.title
+      R.td null, amountFormat(@props.record.amount)
