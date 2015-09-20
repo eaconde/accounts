@@ -2,7 +2,7 @@
   getInitialState: ->
     date: '',
     title: '',
-    amount: 0
+    amount: ''
 
   handleChange: (e) ->
     name = e.target.name
@@ -12,10 +12,11 @@
     @state.title && @state.date && @state.amount
 
   handleSubmit: (e) ->
+    f = @
     e.preventDefault()
     $.post '', { record: @state }, (data) ->
-      @props.handleNewRecord data
-      @setState @getInitialState()
+      f.props.handleNewRecord data
+      f.setState f.getInitialState()
     , 'JSON'
 
   render: ->
