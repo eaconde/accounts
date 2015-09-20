@@ -12,11 +12,10 @@
     @state.title && @state.date && @state.amount
 
   handleSubmit: (e) ->
-    f = @
     e.preventDefault()
-    $.post '', { record: @state }, (data) ->
-      f.props.handleNewRecord data
-      f.setState f.getInitialState()
+    $.post '', { record: @state }, (data) =>
+      @props.handleNewRecord data
+      @setState @getInitialState()
     , 'JSON'
 
   render: ->

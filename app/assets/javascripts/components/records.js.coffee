@@ -8,9 +8,15 @@
     records: []
 
   addRecord: (record) ->
-      records = @state.records.slice()
-      records.push record
-      @setState records: records
+    records = @state.records.slice()
+    records.push record
+    @setState records: records
+
+  deleteRecord: (record) ->
+    records = @state.records.slice()
+    index = records.indexOf record
+    records.splice index, 1
+    @replaceState records: records
 
   credits: ->
     credits = @state.records.filter (val) -> val.amount >= 0
@@ -49,8 +55,7 @@
             R.th null, 'Title'
             R.th null, 'Amount'
             R.th null, 'Actions'
-        R.tbody null
+        R.tbody null,
           for record in @state.records
             # TODO: Bug here, newly added record gets inserted outside of the tbody tag
-            console.log "adding record === #{JSON.stringify(record)}"
-            React.createElement Record, key: record.id, record: record
+            React.createElement Record, key: record.id, record: record, handleDeleteRecord: @deleteRecord
