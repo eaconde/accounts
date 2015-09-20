@@ -13,6 +13,11 @@
     records = React.addons.update(@state.records, { $push: [record] })
     @setState records: records
 
+  updateRecord: (record, data) ->
+    index = @state.records.indexOf record
+    records = React.addons.update(@state.records, { $splice: [[index, 1, data]] })
+    @replaceState records: records
+
   deleteRecord: (record) ->
     # records = @state.records.slice()
     # index = records.indexOf record
@@ -61,4 +66,4 @@
         R.tbody null,
           for record in @state.records
             # TODO: Bug here, newly added record gets inserted outside of the tbody tag
-            React.createElement Record, key: record.id, record: record, handleDeleteRecord: @deleteRecord
+            React.createElement Record, key: record.id, record: record, handleDeleteRecord: @deleteRecord, handleEditRecord: @updateRecord

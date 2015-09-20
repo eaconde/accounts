@@ -2,10 +2,25 @@
   getInitialState: ->
     edit: false
 
+  handleToggle: (e) ->
+    e.preventDefault()
+    @setState edit: !@state.edit
+
   handleEdit: (e) ->
     e.preventDefault()
-    console.log 'should be editable!!!'
-    @setState edit: !@state.edit
+    data =
+      title: React.findDOMNode(@refs.title).value
+      date: React.findDOMNode(@refs.date).value
+      amount: React.findDOMNode(@refs.amount).value
+    $.ajax
+      method: 'PUT'
+      url: "records/#{ @props.record.id }"
+      dataType: 'JSON'
+      data:
+        record: data
+      success: (data) =>
+        @setState edit: false
+        @props.handleEditRecord @props.record, data
 
   handleDelete: (e) ->
     e.preventDefault()
@@ -25,7 +40,7 @@
       R.td null,
         R.a
           className: 'btn btn-default'
-          onClick: @handleEdit
+          onClick: @handleToggle
           'Edit'
         R.a
           className: 'btn btn-danger'
@@ -46,13 +61,13 @@
           className: 'form-control'
           type: 'text'
           defaultValue: @props.record.title
-          ref: 'date'
+          ref: 'title'
       R.td null,
         R.input
           className: 'form-control'
-          type: 'text'
-          defaultValue: amountFormat(@props.record.amount)
-          ref: 'date'
+          type: 'number'
+          defaultValue: @props.record.amount
+          ref: 'amount'
       R.td null,
         R.a
           className: 'btn btn-default'
